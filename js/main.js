@@ -25,17 +25,20 @@ var submitButton = document.getElementById("submit-button");
 	var newDiv = document.createElement("div");
 
 
-	// create h3 username and comment
+	// create h3 username 
 	var newH3 = document.createElement("h3");
 	// update username input
 	newH3.textContent = "Username: " + username;
-	
-	// create p username and comment
-	var newP = document.createElement("p");
+	// create p comment
+	var newP = document.createElement("p");	
 	// update comment input
-	newP.textContent = "Comment: " + comment;
+	newP.textContent = "Comment: " + comment;	
 
 
+
+
+	// adding bootstrap classes to the div element
+	newDiv.classList.add("d-inline-block", "border", "border-primary" , "border-circle" )
 	// append h3 to newLi element
 	newDiv.appendChild(newH3);
 	// append p to newLi element
