@@ -2,49 +2,72 @@ var submitButton = document.getElementById("submit-button");
 
 //funtion displaying username and user comment when button is clicked
  submitButton.addEventListener("click", function(e) {
-	// prevent button default behavior of resetting page after submit
+	// prevent button default behavior of resetting page after button-click
 	e.preventDefault();
 
-	// store username in var
+	// store USERNAME in var
 	var username = document.querySelector("input").value;
-	console.log(username);
-	// store comment in var
+	// store COMMENT in var
 	var comment = document.querySelector("textarea").value;
-	console.log(comment);
+
+	// Prevent user input from empty submissions
+	if (username==null || username=="" || comment==null || comment=="" ) {
+		alert("Please enter a response");
+		return false;
+	}
+
 	
-	// store element displaying username
+	// store element DISPLAYING USERNAME
 	var displayUsername= document.getElementById("display-username")
-	console.log(displayUsername);
 
-	// store element displaying comment
+	// store element DISPLAYING COMMENT
 	var displayComment = document.getElementById("display-comment")
-	console.log(displayComment);
 
 
-	//create a li element
+	// create a DIV element
 	var newDiv = document.createElement("div");
 
-
-	// create h3 username 
+	// create H3 username 
 	var newH3 = document.createElement("h3");
-	// update username input
+	// update USERNAME input
 	newH3.textContent = "Username: " + username;
-	// create p comment
+	// create P comment
 	var newP = document.createElement("p");	
-	// update comment input
+	// update COMMENT input
 	newP.textContent = "Comment: " + comment;	
 
 
+	// create icon from font-awesome
+	var closeIcon = document.createElement("i");
+	// give class to create "x" icon
+	closeIcon.classList.add("fas", "fa-times");
+	// float icon to right
+	closeIcon.style.cssFloat = "right";
+	// make mouse a pointer when hovering icon
+	closeIcon.style.cursor = "pointer";
+	// append icon to newDiv
+	newDiv.appendChild(closeIcon);
 
 
-	// adding bootstrap classes to the div element
-	newDiv.classList.add("d-inline-block", "border", "border-primary" , "border-circle" )
 	// append h3 to newLi element
 	newDiv.appendChild(newH3);
 	// append p to newLi element
 	newDiv.appendChild(newP);
 	// append newLi to body
 	document.body.appendChild(newDiv);
+
+	// adding Bootstrap classes to the div element
+	newDiv.classList.add("d-inline-block", "border", "border-primary", "border-3" , "border-circle", "p-3")
+	// add background color to newDiv
+	newDiv.style.backgroundColor = "#DCEAEF";
+
+	// logic when you click x, it closes new message box
+	closeIcon.addEventListener("click", function(e) {
+		// newDiv.removeChild();
+		// newDiv.style.display = "none";
+		// newDiv.classList.add("d-none");
+		// newDiv.parentNode.removeChild(closeIcon);
+	});
 
 });
 
