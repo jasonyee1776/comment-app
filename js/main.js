@@ -17,43 +17,40 @@ var submitButton = document.getElementById("submit-button");
 	}
 
 	
-	// store element DISPLAYING USERNAME
+	// store element DISPLAYING USERNAME and COMMENT
 	var displayUsername= document.getElementById("display-username")
-
-	// store element DISPLAYING COMMENT
 	var displayComment = document.getElementById("display-comment")
 
 
-	// create a DIV element
+	// create the parent DIV element
 	var newDiv = document.createElement("div");
 
-	// create H3 username 
+	// create  username (h3) and comment (p) elements onto page 
 	var newH3 = document.createElement("h3");
-	// update USERNAME input
-	newH3.textContent = "Username: " + username;
-	// create P comment
 	var newP = document.createElement("p");	
-	// update COMMENT input
+
+
+	// update USERNAME and COMMENT input
+	newH3.textContent = "Username: " + username;
 	newP.textContent = "Comment: " + comment;	
 
 
-	// create icon from font-awesome
+	// create icon 
 	var closeIcon = document.createElement("i");
-	// give class to create "x" icon
+	// give font-awesome class to create "x" icon
 	closeIcon.classList.add("fas", "fa-times");
-	// float icon to right
+	// float icon to right of newDIv
 	closeIcon.style.cssFloat = "right";
 	// make mouse a pointer when hovering icon
 	closeIcon.style.cursor = "pointer";
-	// append icon to newDiv
+
+
+	// append elemets to newDiv 
 	newDiv.appendChild(closeIcon);
-
-
-	// append h3 to newLi element
 	newDiv.appendChild(newH3);
-	// append p to newLi element
 	newDiv.appendChild(newP);
-	// append newLi to body
+
+	// append newDiv to body
 	document.body.appendChild(newDiv);
 
 	// adding Bootstrap classes to the div element
@@ -62,7 +59,13 @@ var submitButton = document.getElementById("submit-button");
 	newDiv.style.backgroundColor = "#DCEAEF";
 
 	// logic when you click x, it closes new message box
-	closeIcon.addEventListener("click", function(e) {
+	closeIcon.addEventListener("click", function(event) {
+		if (event.target.tagName == "div") {
+			if (event.target.className=="fa-times") {
+				body.removeChild(newDiv);
+			}
+		}
+		// newDiv.parentNode.removeChild(newDiv);
 		// newDiv.removeChild();
 		// newDiv.style.display = "none";
 		// newDiv.classList.add("d-none");
