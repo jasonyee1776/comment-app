@@ -45,13 +45,12 @@ var submitButton = document.getElementById("submit-button");
 	// append newDiv to body
 	document.body.appendChild(newDiv);
 
-	// adding Bootstrap classes to the div element
-	newDiv.classList.add("d-inline-block", "border", "border-primary", "border-3" , "border-circle", "p-3")
-	// add background color to newDiv
+	// add styling Bootstrap classes to newDiv   
+	newDiv.classList.add("d-inline-block", "border", "border-primary", "border-3" , "border-circle", "p-3", "m-3")
 	newDiv.style.backgroundColor = "#DCEAEF";
-	// add class to remove button
+
+	// add style and class to remove button
 	removeButton.classList.add("btn", "btn-danger");
-	// add id to remove button
 	removeButton.id = "remove";
 
 	// logic when you click remove button,  message box
@@ -62,6 +61,11 @@ var submitButton = document.getElementById("submit-button");
 	});
 
 });
+
+
+
+
+
 
 
 
