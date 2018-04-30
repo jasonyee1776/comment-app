@@ -1,6 +1,7 @@
+// store submit button
 var submitButton = document.getElementById("submit-button");
 
-//funtion displaying username and user comment when button is clicked
+// Display username inout and  comment input when submit button is clicked
  submitButton.addEventListener("click", function(e) {
 	// prevent button default behavior of resetting page after button-click
 	e.preventDefault();
@@ -10,17 +11,18 @@ var submitButton = document.getElementById("submit-button");
 	// store COMMENT in var
 	var comment = document.querySelector("textarea").value;
 
+
 	// Prevent user input from empty submissions
-	if (username==null || username=="" || comment==null || comment=="" ) {
-		alert("Please enter a response");
+	if ((username==null || username=="") && (comment==null || comment=="" )) {
+		alert("Please enter a Username and Comment");
+		return false;
+	} else if (username==null || username=="") {
+		alert("Don't forget your Username!");
+		return false;
+	}  else if (comment==null || comment=="") {
+		alert("Please fill in a Comment!");
 		return false;
 	}
-
-	
-	// store element DISPLAYING USERNAME and COMMENT
-	var displayUsername= document.getElementById("display-username")
-	var displayComment = document.getElementById("display-comment")
-
 
 	// create the parent DIV element
 	var newDiv = document.createElement("div");
@@ -28,27 +30,17 @@ var submitButton = document.getElementById("submit-button");
 	// create  username (h3) and comment (p) elements onto page 
 	var newH3 = document.createElement("h3");
 	var newP = document.createElement("p");	
-
+	var removeButton = document.createElement("button");
 
 	// update USERNAME and COMMENT input
 	newH3.textContent = "Username: " + username;
 	newP.textContent = "Comment: " + comment;	
-
-
-	// create icon 
-	var closeIcon = document.createElement("i");
-	// give font-awesome class to create "x" icon
-	closeIcon.classList.add("fas", "fa-times");
-	// float icon to right of newDIv
-	closeIcon.style.cssFloat = "right";
-	// make mouse a pointer when hovering icon
-	closeIcon.style.cursor = "pointer";
-
+	removeButton.textContent = "Remove";
 
 	// append elemets to newDiv 
-	newDiv.appendChild(closeIcon);
 	newDiv.appendChild(newH3);
 	newDiv.appendChild(newP);
+	newDiv.appendChild(removeButton);
 
 	// append newDiv to body
 	document.body.appendChild(newDiv);
@@ -57,19 +49,16 @@ var submitButton = document.getElementById("submit-button");
 	newDiv.classList.add("d-inline-block", "border", "border-primary", "border-3" , "border-circle", "p-3")
 	// add background color to newDiv
 	newDiv.style.backgroundColor = "#DCEAEF";
+	// add class to remove button
+	removeButton.classList.add("btn", "btn-danger");
+	// add id to remove button
+	removeButton.id = "remove";
 
-	// logic when you click x, it closes new message box
-	closeIcon.addEventListener("click", function(event) {
-		if (event.target.tagName == "div") {
-			if (event.target.className=="fa-times") {
-				body.removeChild(newDiv);
-			}
+	// logic when you click remove button,  message box
+	removeButton.addEventListener("click", function(event) {
+		if (event.target.id=="remove") {
+			document.body.removeChild(newDiv);
 		}
-		// newDiv.parentNode.removeChild(newDiv);
-		// newDiv.removeChild();
-		// newDiv.style.display = "none";
-		// newDiv.classList.add("d-none");
-		// newDiv.parentNode.removeChild(closeIcon);
 	});
 
 });
